@@ -44,8 +44,21 @@ print(phonetic_dict)
 
 # TODO 2. Create a list of the phonetic code words from a word that the user inputs.
 
-word = input("Enter a word?").upper()
 
-output_list = [phonetic_dict[letter] for letter in word]
+def check_word_input():
+    try:
+        boolean = True
 
-print(output_list)
+        word = input("Enter a word?").upper()
+        if not word.isalpha():
+            raise ValueError("Please enter alphabet word")
+
+    except ValueError as e:
+        print(e)
+        check_word_input()
+    else:
+        output_list = [phonetic_dict[letter] for letter in word]
+        print(output_list)
+
+
+check_word_input()
